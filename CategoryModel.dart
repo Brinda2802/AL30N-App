@@ -1,0 +1,75 @@
+class CategoryModel {
+  List<Categorys>? categorys;
+
+  CategoryModel({this.categorys});
+
+  CategoryModel.fromJson(Map<String, dynamic> json) {
+    if (json['categorys'] != null) {
+      categorys = <Categorys>[];
+      json['categorys'].forEach((v) {
+        categorys!.add(new Categorys.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.categorys != null) {
+      data['categorys'] = this.categorys!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Categorys {
+  String? id;
+  String? parentId;
+  String? title;
+  String? arabicTitle;
+  String? precedence;
+  String? image;
+  String? status;
+  String? approveStatus;
+  String? createdOn;
+  String? updatedAt;
+
+  Categorys(
+      {this.id,
+        this.parentId,
+        this.title,
+        this.arabicTitle,
+        this.precedence,
+        this.image,
+        this.status,
+        this.approveStatus,
+        this.createdOn,
+        this.updatedAt});
+
+  Categorys.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    parentId = json['parent_id'];
+    title = json['title'];
+    arabicTitle = json['arabic_title'];
+    precedence = json['precedence'];
+    image = json['image'];
+    status = json['status'];
+    approveStatus = json['approve_status'];
+    createdOn = json['created_on'];
+    updatedAt = json['updated_at'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['parent_id'] = this.parentId;
+    data['title'] = this.title;
+    data['arabic_title'] = this.arabicTitle;
+    data['precedence'] = this.precedence;
+    data['image'] = this.image;
+    data['status'] = this.status;
+    data['approve_status'] = this.approveStatus;
+    data['created_on'] = this.createdOn;
+    data['updated_at'] = this.updatedAt;
+    return data;
+  }
+}
